@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Login  from './Login';
+import Cadastro  from './Cadastro';
 import Index  from './Index';
 import { UtilsContext } from './Context';
 import { useState } from 'react';
@@ -13,8 +15,9 @@ export default function App() {
     <NavigationContainer>
       <UtilsContext.Provider value={{utils, setUtils}}>
         <Stack.Navigator>
-          <Stack.Screen name="Index" options={{headerShown: false}} component={Index}/>
-          {/* <Stack.Screen name="" options={{title: 'Histórico:'}} component={}/> */}
+          <Stack.Screen name="Login" options={{headerShown: false}} component={Login}/>
+          <Stack.Screen name="Cadastro" options={{title: 'Cadastro de Morador:'}} component={Cadastro}/> 
+          <Stack.Screen name="Index" options={{headerShown: false}} component={Index}/> 
         </Stack.Navigator>  
       </UtilsContext.Provider>
     </NavigationContainer>

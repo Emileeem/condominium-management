@@ -1,49 +1,38 @@
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground  } from 'react-native';
 import logo from './image/logo.png'
 
 const styles = StyleSheet.create({
     main: {
-      backgroundColor: '#F2DFDF',
-      margin: 1,
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems:"center"
+        backgroundColor: '#F2F2F2',
+        margin: 1,
+        width: '100%',
+        height: '100%',
+        borderColor: '#D9B1AD',
+        borderWidth: 2,
+        padding: 10,
+        margin: 2
     },
-    input : 
-    {
-        width: '95%',
-        height: 35,
-        backgroundColor:'#D9C1BB',
-        marginBottom: 15,
-        borderRadius: 5,
-        borderColor: '#595859',
-        borderWidth: 1
+    main2: {
+        display: 'flex',
+        flexDirection:"row",
+        justifyContent:"flex-direction",
     }
-    
-  });
 
-export default function Index(props){
+})
 
-    
-    
-    return (
-    <>
-        <View style = {styles.main}>
-            <img src={logo} style = {{width:"300px", height: "300px"}}/>
-            <Text style = {{
-                fontFamily: 'cursive', fontSize: 30
-            }}>  </Text>
-
-            <Text> Email: </Text>
-            <TextInput style = {styles.input}>
-            </TextInput>
-            <Text>  Senha: </Text>
-            <TextInput style = {styles.input}>
-            </TextInput>
-            
-        </View>
-    </>
+export default function Index(props) {
+    return(
+        <>
+            <View style={styles.main}>
+                <View style={styles.main2}>
+                    <img src={logo} style={{ width: "150px", height: "150px" }} />
+                    <Text style = {{fontSize: "30px"}}> Bem vindo s/n! </Text>
+                </View>
+                <ImageBackground
+                    source = {require('./image/churras.png')}
+                    style={{width:250, height: 150, borderRadius:"25px"}}
+                />
+            </View>
+        </>
     )
-      
 }
