@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 
 })
 
-export default function Index(props) {
+export default function IndexAdm(props) {
     return(
         <>
             <View style={styles.main}>
@@ -56,36 +56,22 @@ export default function Index(props) {
                     <Text style = {{fontSize: "30px"}}> Bem vindo s/n! </Text>
                 </View>
 
-                <Text style = {{fontSize: "25px", textAlign: 'center', margin: "20px"}}> O valor atual do condomínio é de: R$ 1500,00 </Text>
+                <Text style = {{fontSize: "25px", textAlign: 'center', margin: "20px"}}> 
+                    O valor atual do condomínio é de: <TextInput/>
+                </Text>
 
                 <TouchableOpacity style={[styles.viewAll , { backgroundColor: "#4bb8b6"}]}>
                     <ImageBackground
                         source = {require('./image/churras.png')}
                         style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
                     />
-                    <Text style = {styles.text}> Reservar Churrasqueira </Text>
+                    <Text style = {styles.text}> Ver Reservas </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#c43333"}]}>
-                    <Text  style = {styles.text2}> Denunciar Irregularidades </Text>
+                    <Text  style = {styles.text2}> Ver Denuncias </Text>
                     <ImageBackground
                         source = {require('./image/denuncia.png.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
-                    />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#92cf69"}]}>
-                    <ImageBackground
-                        source = {require('./image/boleto.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
-                    />
-                    <Text style = {styles.text}> Gerar Boleto </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#674d9e"}]}>
-                    <Text style = {styles.text2}> Vaga de estacionamento </Text>
-                    <ImageBackground
-                        source = {require('./image/carro.png')}
                         style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
                     />
                 </TouchableOpacity>
@@ -95,7 +81,47 @@ export default function Index(props) {
                         source = {require('./image/votar.png')}
                         style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
                     />
-                    <Text style = {styles.text}> Votações </Text>
+                    <Text style = {styles.text}> Ver Votações </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#674d9e"}]}>
+                    <Text style = {styles.text2}> Vaga de estacionamento </Text>
+                    <ImageBackground
+                        source = {require('./image/carro.png')}
+                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
+                    />
+                </TouchableOpacity>
+                
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#f065e6"}]}>
+                    <ImageBackground
+                        source = {require('./image/social.png')}
+                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
+                    />
+                    <Text style = {styles.text}> Visitantes </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#4a2d04"}]}>
+                    <Text style = {styles.text2}> Agendar Assembléias </Text>
+                    <ImageBackground
+                        source = {require('./image/maos.png')}
+                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
+                    />
+                </TouchableOpacity>
+             
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#fc7e08"}]}>
+                    <ImageBackground
+                        source = {require('./image/ap.png')}
+                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
+                    />
+                    <Text style = {styles.text}> Apartamentos </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#918f8d"}]}>
+                    <Text style = {styles.text2}> Coleta de Lixos </Text>
+                    <ImageBackground
+                        source = {require('./image/lixo.png')}
+                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
+                    />
                 </TouchableOpacity>
             </View>
         </>

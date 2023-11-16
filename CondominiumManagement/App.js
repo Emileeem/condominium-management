@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login  from './Login';
 import Cadastro  from './Cadastro';
 import Index  from './Index';
+import IndexAdm  from './IndexAdm';
 import { UtilsContext } from './Context';
 import { useState } from 'react';
 
@@ -18,6 +19,7 @@ export default function App() {
           <Stack.Screen name="Login" options={{headerShown: false}} component={Login}/>
           <Stack.Screen name="Cadastro" options={{title: 'Cadastro de Morador:'}} component={Cadastro}/> 
           <Stack.Screen name="Index" options={{headerShown: false}} component={Index}/> 
+          <Stack.Screen name="IndexAdm" options={{headerShown: false}} component={IndexAdm}/> 
         </Stack.Navigator>  
       </UtilsContext.Provider>
     </NavigationContainer>
