@@ -36,16 +36,18 @@ const styles = StyleSheet.create({
         display: "flex",
         top: "-80PX",
         left: "25PX",
-        width:"50px"
+        width:"50px",
+        textAlign: "left"
     },
     text2: {
         textAlign: "center",
         fontSize: "20px",
         color: "#FFF",
         display: "flex",
-        left: "105px",
+        left: "115px",
         top: "25px",
-        width:"50px"
+        width:"50px",
+        textAlign: "left"
     },
     img1: 
     {
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     {
         width: '100px', 
         height: '100px', 
-        bottom: "45px"
+        bottom: "45px",
     }
 
 })
