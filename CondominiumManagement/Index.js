@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground} from 'react-native';
 import logo from './image/logo.png'
-import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
 const styles = StyleSheet.create({
     main: {
