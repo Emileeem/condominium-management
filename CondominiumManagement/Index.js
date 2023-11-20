@@ -11,7 +11,9 @@ const styles = StyleSheet.create({
         borderColor: '#D9B1AD',
         borderWidth: 2,
         padding: 10,
-        margin: "1%"
+        margin: "1%",
+        alignContent: "center",
+        alignItems:"center"
     },
     main2: {
         display: 'flex',
@@ -23,27 +25,42 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 10,
         borderColor: "#595859",
-        width: horizontalScale(354),
-        height: verticalScale(110),
-        marginLeft: "2%",
-        marginBottom: "2%"
+        width: "354px",
+        height: "110px",
+        marginLeft: "1%",
+        marginBottom: "2%",
     },
     text: {
         textAlign: "center",
         fontSize: "20px",
         color: "#000",
         display: "flex",
-        top: "-60PX",
-        left: "25PX"
+        top: "-80PX",
+        left: "25PX",
+        width:"50px"
     },
     text2: {
         textAlign: "center",
         fontSize: "20px",
         color: "#FFF",
         display: "flex",
-        left: "95px",
-        top: "25px"
+        left: "105px",
+        top: "25px",
+        width:"50px"
     },
+    img1: 
+    {
+        width: '100px', 
+        height: '100px', 
+        display: 'flex', 
+        left: "70%"
+    },
+    img2:
+    {
+        width: '100px', 
+        height: '100px', 
+        bottom: "45px"
+    }
 
 })
 
@@ -52,7 +69,7 @@ export default function Index(props) {
         <>
             <View style={styles.main}>
                 <View style={styles.main2}>
-                    <img src={logo} style={{ width: horizontalScale(150), height: verticalScale(150) }} />
+                    <img src={logo} style={{ width: "150px", height: "150px" }} />
                     <Text style = {{fontSize: "30px"}}> Bem vindo s/n! </Text>
                 </View>
 
@@ -61,7 +78,7 @@ export default function Index(props) {
                 <TouchableOpacity style={[styles.viewAll , { backgroundColor: "#4bb8b6"}]}>
                     <ImageBackground
                         source = {require('./image/churras.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
+                        style={styles.img1}
                     />
                     <Text style = {styles.text}> Reservar Churrasqueira </Text>
                 </TouchableOpacity>
@@ -70,14 +87,14 @@ export default function Index(props) {
                     <Text  style = {styles.text2}> Denunciar Irregularidades </Text>
                     <ImageBackground
                         source = {require('./image/denuncia.png.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
+                        style={styles.img2}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#92cf69"}]}>
                     <ImageBackground
                         source = {require('./image/boleto.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
+                        style={styles.img1}
                     />
                     <Text style = {styles.text}> Gerar Boleto </Text>
                 </TouchableOpacity>
@@ -86,14 +103,14 @@ export default function Index(props) {
                     <Text style = {styles.text2}> Vaga de estacionamento </Text>
                     <ImageBackground
                         source = {require('./image/carro.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
+                        style={styles.img2}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#ebe86c"}]}>
                     <ImageBackground
                         source = {require('./image/votar.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
+                        style={styles.img1}
                     />
                     <Text style = {styles.text}> Votações </Text>
                 </TouchableOpacity>

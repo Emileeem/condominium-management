@@ -44,6 +44,19 @@ const styles = StyleSheet.create({
         left: "95px",
         top: "25px"
     },
+    img1: 
+    {
+        width: '100px', 
+        height: '100px', 
+        display: 'flex', 
+        left: "70%"
+    },
+    img2:
+    {
+        width: '100px', 
+        height: '100px', 
+        bottom: "45px"
+    }
 
 })
 
@@ -63,7 +76,7 @@ export default function IndexAdm(props) {
                 <TouchableOpacity style={[styles.viewAll , { backgroundColor: "#4bb8b6"}]}>
                     <ImageBackground
                         source = {require('./image/churras.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
+                        style={styles.img1}
                     />
                     <Text style = {styles.text}> Ver Reservas </Text>
                 </TouchableOpacity>
@@ -72,14 +85,14 @@ export default function IndexAdm(props) {
                     <Text  style = {styles.text2}> Ver Denuncias </Text>
                     <ImageBackground
                         source = {require('./image/denuncia.png.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
+                        style={styles.img2}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#ebe86c"}]}>
                     <ImageBackground
                         source = {require('./image/votar.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
+                        style={styles.img1}
                     />
                     <Text style = {styles.text}> Ver Votações </Text>
                 </TouchableOpacity>
@@ -88,14 +101,14 @@ export default function IndexAdm(props) {
                     <Text style = {styles.text2}> Vaga de estacionamento </Text>
                     <ImageBackground
                         source = {require('./image/carro.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
+                        style={styles.img2}
                     />
                 </TouchableOpacity>
                 
                 <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#f065e6"}]}>
                     <ImageBackground
                         source = {require('./image/social.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
+                        style={styles.img1}
                     />
                     <Text style = {styles.text}> Visitantes </Text>
                 </TouchableOpacity>
@@ -104,14 +117,14 @@ export default function IndexAdm(props) {
                     <Text style = {styles.text2}> Agendar Assembléias </Text>
                     <ImageBackground
                         source = {require('./image/maos.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
+                        style={styles.img2}
                     />
                 </TouchableOpacity>
              
                 <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#fc7e08"}]}>
                     <ImageBackground
                         source = {require('./image/ap.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), display: 'flex', left: "70%"}}
+                        style={styles.img1}
                     />
                     <Text style = {styles.text}> Apartamentos </Text>
                 </TouchableOpacity>
@@ -120,7 +133,7 @@ export default function IndexAdm(props) {
                     <Text style = {styles.text2}> Coleta de Lixos </Text>
                     <ImageBackground
                         source = {require('./image/lixo.png')}
-                        style={{width: horizontalScale(100), height: verticalScale(100), bottom: "25px"}}
+                        style={styles.img2}
                     />
                 </TouchableOpacity>
             </View>
