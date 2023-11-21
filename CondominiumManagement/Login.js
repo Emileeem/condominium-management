@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
 });
 
 export default function Login(props) {
-
     function goToUsuarios(){
         SetUtils({...utils, email:email, senha:senha})
         props.navigation.navigate('Cadastro')
