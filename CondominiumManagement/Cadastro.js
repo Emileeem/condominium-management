@@ -105,7 +105,7 @@ export default function Cadastro(props) {
             </Text>
             <TextInput style={styles.input}/>
 
-            <TouchableOpacity style={styles.buton}  onPress={() => props.navigation.navigate("Cadastro")}> 
+            <TouchableOpacity style={styles.buton}  onPress={() => props.navigation.navigate("IndexAdm")}> 
                 <Text style={styles.text3}> Cadastrar </Text> 
             </TouchableOpacity>
         </View>

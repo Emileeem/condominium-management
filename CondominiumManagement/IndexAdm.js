@@ -11,7 +11,9 @@ const styles = StyleSheet.create({
         borderColor: '#D9B1AD',
         borderWidth: 2,
         padding: 10,
-        margin: "1%"
+        margin: "1%",
+        alignContent: "center",
+        alignItems:"center"
     },
     main2: {
         display: 'flex',
@@ -23,8 +25,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 10,
         borderColor: "#595859",
-        width: horizontalScale(354),
-        height: verticalScale(110),
+        width: "354px",
+        height: "110px",
         marginLeft: "2%",
         marginBottom: "2%"
     },
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
         color: "#FFF",
         display: "flex",
         left: "95px",
-        top: "25px"
+        top: "40px"
     },
     img1: 
     {
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
     {
         width: '100px', 
         height: '100px', 
-        bottom: "45px"
+        bottom: "23px"
     }
 
 })
@@ -65,7 +67,7 @@ export default function IndexAdm(props) {
         <>
             <View style={styles.main}>
                 <View style={styles.main2}>
-                    <img src={logo} style={{ width: horizontalScale(150), height: verticalScale(150) }} />
+                    <img src={logo} style={{ width: "150px", height: "150px" }} />
                     <Text style = {{fontSize: "30px"}}> Bem vindo s/n! </Text>
                 </View>
 
@@ -81,7 +83,7 @@ export default function IndexAdm(props) {
                     <Text style = {styles.text}> Ver Reservas </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#c43333"}]}>
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#c43333"}]} onPress={() => props.navigation.navigate("Denuncias")} >
                     <Text  style = {styles.text2}> Ver Denuncias </Text>
                     <ImageBackground
                         source = {require('./image/denuncia.png.png')}
