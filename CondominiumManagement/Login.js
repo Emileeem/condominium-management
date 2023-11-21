@@ -83,7 +83,7 @@ export default function Login(props) {
 
                     <Text style={styles.text}> Não possui login? </Text>
 
-                    <TouchableOpacity style={styles.buton}  onPress={() => props.navigation.navigate("Denuncias")}> 
+                    <TouchableOpacity style={styles.buton}  onPress={() => props.navigation.navigate("Cadastro")}> 
                         <Text style={styles.text2}> Cadastre-se</Text> 
                     </TouchableOpacity>
 

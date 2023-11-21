@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Modal, TouchableOpacity, ImageBackground, Pressable, TextInput} from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import logo from './image/logo.png'
+import {UtilsContext} from './Context';
 
 const styles = StyleSheet.create({
     main: {
@@ -140,7 +141,11 @@ const styles = StyleSheet.create({
 })
 
 export default function Index(props) {
+    // Modals
     const [denuncia, setDenunciaVisible] = useState(false);
+
+    const {utils, SetUtils} = useContext(UtilsContext)
+
     return(
         <>
             <View style={styles.main}>
@@ -212,9 +217,10 @@ export default function Index(props) {
                         <Text  style={styles.assunto}> Descreva o problema que ocorreu: </Text>
                         <TextInput style = {styles.input2}/>
 
-                        <TouchableOpacity style={styles.enviar}>
+                        <TouchableOpacity style={styles.enviar} >
                             <Text style={styles.textStyle}> Enviar Denúncia</Text>
                         </TouchableOpacity>
+
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => setDenunciaVisible(!denuncia)}>
@@ -226,6 +232,7 @@ export default function Index(props) {
                 </View>
 
             </Modal>
+
         </>
     )
 }

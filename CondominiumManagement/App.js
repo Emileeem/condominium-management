@@ -10,7 +10,7 @@ import { UtilsContext } from './Context';
 import { useState } from 'react';
 
 export default function App() {
-  const [utils, setUtils] = useState({})
+  const [utils, setUtils] = useState({denuncia:[]})
   const Stack = createStackNavigator()
 
   return (

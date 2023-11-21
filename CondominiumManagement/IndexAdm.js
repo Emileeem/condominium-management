@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, Pressable} from 'react-native';
 import logo from './image/logo.png'
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
@@ -58,6 +58,20 @@ const styles = StyleSheet.create({
         width: '100px', 
         height: '100px', 
         bottom: "23px"
+    },
+    input : {
+        borderColor: "#595859",
+        borderWidth: 1,
+        width: "120px",
+        height: "25px",
+        borderRadius: 2,
+        fontSize: "20px",
+        marginRight: "10px"
+    },
+    press : {
+        width: "90px",
+        height: "30px",
+        backgroundColor: "#595859"
     }
 
 })
@@ -72,7 +86,10 @@ export default function IndexAdm(props) {
                 </View>
 
                 <Text style = {{fontSize: "25px", textAlign: 'center', margin: "20px"}}> 
-                    O valor atual do condomínio é de: <TextInput/>
+                    O valor atual do condomínio é de: <TextInput style={styles.input}/>
+                    <TouchableOpacity style = {styles.press}> 
+                        <Text style={{fontSize: "20px", color: "white"}}>Enviar</Text> 
+                    </TouchableOpacity>
                 </Text>
 
                 <TouchableOpacity style={[styles.viewAll , { backgroundColor: "#4bb8b6"}]}>
