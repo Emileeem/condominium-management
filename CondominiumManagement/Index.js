@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View, Modal, TouchableOpacity, ImageBackground, Pressable, TextInput} from 'react-native';
+import { StyleSheet, Text, View, Modal, TouchableOpacity, ImageBackground, Pressable, TextInput } from 'react-native';
 import React, { useState, useContext } from 'react';
 import logo from './image/logo.png'
-import {UtilsContext} from './Context';
+import { UtilsContext } from './Context';
+import { registerTranslation, DatePickerInput  } from 'react-native-paper-dates'
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const styles = StyleSheet.create({
     main: {
@@ -14,14 +16,14 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: "1%",
         alignContent: "center",
-        alignItems:"center"
+        alignItems: "center"
     },
     main2: {
         display: 'flex',
-        flexDirection:"row",
-        justifyContent:"flex-direction",
+        flexDirection: "row",
+        justifyContent: "flex-direction",
     },
-    viewAll : {
+    viewAll: {
         backgroundColor: "#D9B1AD",
         borderWidth: 2,
         borderRadius: 10,
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
         display: "flex",
         top: "-80PX",
         left: "25PX",
-        width:"50px",
+        width: "50px",
         textAlign: "left"
     },
     text2: {
@@ -48,20 +50,20 @@ const styles = StyleSheet.create({
         display: "flex",
         left: "115px",
         top: "25px",
-        width:"50px",
+        width: "50px",
         textAlign: "left"
     },
-    img1: 
+    img1:
     {
-        width: '100px', 
-        height: '100px', 
-        display: 'flex', 
+        width: '100px',
+        height: '100px',
+        display: 'flex',
         left: "70%"
     },
     img2:
     {
-        width: '100px', 
-        height: '100px', 
+        width: '100px',
+        height: '100px',
         bottom: "45px",
     },
     centeredView: {
@@ -69,8 +71,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 22,
-      },
-      modalView: {
+    },
+    modalView: {
         margin: 20,
         backgroundColor: 'white',
         borderRadius: 20,
@@ -78,122 +80,124 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
-          width: 0,
-          height: 2,
+            width: 0,
+            height: 2,
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-      },
-      button: {
+    },
+    button: {
         borderRadius: 20,
         padding: 10,
         elevation: 2,
-      },
-      buttonOpen: {
+    },
+    buttonOpen: {
         backgroundColor: '#F194FF',
-      },
-      buttonClose: {
+    },
+    buttonClose: {
         backgroundColor: 'red',
         position: "relative",
         bottom: "105%",
         left: "59%"
-      },
-      textStyle: {
+    },
+    textStyle: {
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
-      },
-      modalText: {
+    },
+    modalText: {
         marginBottom: 15,
         textAlign: 'center',
-      },
-      title : {
-          fontSize: "25px",
-          marginBottom: "15px",
-          color: "red",
-          textAlign: "center"
-      },
-      enviar : {
-          width: "105px",
-          height: "45px",
-          backgroundColor: "#595859",
-          borderRadius: "20px",
-          top: "15%"
-      },
-      assunto : {
-          fontSize: "18px"
-      },
-      input: {
+    },
+    title: {
+        fontSize: "25px",
+        marginBottom: "15px",
+        color: "red",
+        textAlign: "center"
+    },
+    enviar: {
+        width: "105px",
+        height: "45px",
+        backgroundColor: "#595859",
+        borderRadius: "20px",
+        top: "15%"
+    },
+    assunto: {
+        fontSize: "18px"
+    },
+    input: {
         borderColor: "#595859",
         borderWidth: 2,
         height: "35px",
         width: "275px",
         margin: "1%"
-      },
-      input2 : {
+    },
+    input2: {
         borderColor: "#595859",
         borderWidth: 2,
         height: "95px",
         width: "275px",
         margin: "1%"
-      }
+    }
 })
 
 export default function Index(props) {
     // Modals
     const [denuncia, setDenunciaVisible] = useState(false);
+    const [calendar, setCalendarVisible] = useState(false);
 
-    const {utils, SetUtils} = useContext(UtilsContext)
+    //Calendario
+    const [inputDate, setInputDate] = React.useState(undefined)
 
-    return(
+    return (
         <>
             <View style={styles.main}>
                 <View style={styles.main2}>
                     <img src={logo} style={{ width: "150px", height: "150px" }} />
-                    <Text style = {{fontSize: "30px"}}> Bem vindo s/n! </Text>
+                    <Text style={{ fontSize: "30px" }}> Bem vindo s/n! </Text>
                 </View>
 
-                <Text style = {{fontSize: "25px", textAlign: 'center', margin: "20px"}}> O valor atual do condomínio é de: R$ 1500,00 </Text>
+                <Text style={{ fontSize: "25px", textAlign: 'center', margin: "20px" }}> O valor atual do condomínio é de: R$ 1500,00 </Text>
 
-                <TouchableOpacity style={[styles.viewAll , { backgroundColor: "#4bb8b6"}]}>
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#4bb8b6" }]} onPress={() => setCalendarVisible(true)}>
                     <ImageBackground
-                        source = {require('./image/churras.png')}
+                        source={require('./image/churras.png')}
                         style={styles.img1}
                     />
-                    <Text style = {styles.text}> Reservar Churrasqueira </Text>
+                    <Text style={styles.text}> Reservar Churrasqueira </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#c43333"}]} onPress={() => setDenunciaVisible(true)}>
-                    <Text  style = {styles.text2}> Denunciar Irregularidades </Text>
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#c43333" }]} onPress={() => setDenunciaVisible(true)}>
+                    <Text style={styles.text2}> Denunciar Irregularidades </Text>
                     <ImageBackground
-                        source = {require('./image/denuncia.png.png')}
+                        source={require('./image/denuncia.png.png')}
                         style={styles.img2}
                     />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#92cf69"}]}>
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#92cf69" }]}>
                     <ImageBackground
-                        source = {require('./image/boleto.png')}
+                        source={require('./image/boleto.png')}
                         style={styles.img1}
                     />
-                    <Text style = {styles.text}> Gerar Boleto </Text>
+                    <Text style={styles.text}> Gerar Boleto </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#674d9e"}]}>
-                    <Text style = {styles.text2}> Vaga de estacionamento </Text>
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#674d9e" }]}>
+                    <Text style={styles.text2}> Vaga de estacionamento </Text>
                     <ImageBackground
-                        source = {require('./image/carro.png')}
+                        source={require('./image/carro.png')}
                         style={styles.img2}
                     />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#ebe86c"}]}>
+                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#ebe86c" }]}>
                     <ImageBackground
-                        source = {require('./image/votar.png')}
+                        source={require('./image/votar.png')}
                         style={styles.img1}
                     />
-                    <Text style = {styles.text}> Votações </Text>
+                    <Text style={styles.text}> Votações </Text>
                 </TouchableOpacity>
             </View>
 
@@ -212,10 +216,10 @@ export default function Index(props) {
 
                         <Text style={styles.title}>Denunciar Irregularidades</Text>
                         <Text style={styles.assunto}> Qual o assunto? </Text>
-                        <TextInput style = {styles.input}/>
+                        <TextInput style={styles.input} />
 
-                        <Text  style={styles.assunto}> Descreva o problema que ocorreu: </Text>
-                        <TextInput style = {styles.input2}/>
+                        <Text style={styles.assunto}> Descreva o problema que ocorreu: </Text>
+                        <TextInput style={styles.input2} />
 
                         <TouchableOpacity style={styles.enviar} >
                             <Text style={styles.textStyle}> Enviar Denúncia</Text>
@@ -226,7 +230,51 @@ export default function Index(props) {
                             onPress={() => setDenunciaVisible(!denuncia)}>
                             <Text style={styles.textStyle}>X</Text>
                         </Pressable>
-                        
+
+                    </View>
+
+                </View>
+
+            </Modal>
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={calendar}
+                onRequestClose={() => {
+                    Alert.alert('Calendário foi fechado.');
+                    setCalendarVisible(!calendar);
+                }}>
+
+                <View style={styles.centeredView}>
+
+                    <View style={styles.modalView}>
+
+                        <Text style={styles.title}> Reservar Churrasqueira </Text>
+                        <Text style={styles.assunto}> Qual o evento? </Text>
+                        <TextInput style={styles.input} />
+                        <SafeAreaProvider>
+                            <View style={{ justifyContent: 'center', flex: 1, alignItems: 'center', marginTop: 15}}>
+                                <DatePickerInput
+                                    locale="pt-br"
+                                    label="Selecione"
+                                    value={inputDate}
+                                    onChange={(d) => setInputDate(d)}
+                                    inputMode="start"
+                                />
+                            </View>
+                        </SafeAreaProvider>
+
+                        <TouchableOpacity style={[styles.enviar,{ width: "155px"}]} >
+                            <Text style={styles.textStyle}> Enviar Pedido de Reserva </Text>
+                        </TouchableOpacity>
+
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => setCalendarVisible(!calendar)}>
+                            <Text style={styles.textStyle}>X</Text>
+                        </Pressable>
+
                     </View>
 
                 </View>

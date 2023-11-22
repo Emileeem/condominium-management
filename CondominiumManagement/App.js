@@ -6,6 +6,7 @@ import Cadastro  from './Cadastro';
 import Index  from './Index';
 import IndexAdm  from './IndexAdm';
 import Denuncias  from './Denuncias';
+import Reservas  from './Reservas';
 import { UtilsContext } from './Context';
 import { useState } from 'react';
 
@@ -22,6 +23,7 @@ export default function App() {
           <Stack.Screen name="Index" options={{headerShown: false}} component={Index}/> 
           <Stack.Screen name="IndexAdm" options={{headerShown: false}} component={IndexAdm}/> 
           <Stack.Screen name="Denuncias" options={{headerShown: true, title : " Central de Denúncias"}} component={Denuncias}/> 
+          <Stack.Screen name="Reservas" options={{headerShown: true, title : " Central de Reservas"}} component={Reservas}/> 
         </Stack.Navigator>  
       </UtilsContext.Provider>
     </NavigationContainer>

@@ -35,29 +35,33 @@ const styles = StyleSheet.create({
         fontSize: "20px",
         color: "#000",
         display: "flex",
-        top: "-60PX",
-        left: "25PX"
+        top: "-80PX",
+        left: "25PX",
+        width: "50px",
+        textAlign: "left"
     },
     text2: {
         textAlign: "center",
         fontSize: "20px",
         color: "#FFF",
         display: "flex",
-        left: "95px",
-        top: "40px"
+        left: "115px",
+        top: "25px",
+        width: "50px",
+        textAlign: "left"
     },
-    img1: 
+    img1:
     {
-        width: '100px', 
-        height: '100px', 
-        display: 'flex', 
+        width: '100px',
+        height: '100px',
+        display: 'flex',
         left: "70%"
     },
     img2:
     {
-        width: '100px', 
-        height: '100px', 
-        bottom: "23px"
+        width: '100px',
+        height: '100px',
+        bottom: "45px",
     },
     input : {
         borderColor: "#595859",
@@ -92,7 +96,7 @@ export default function IndexAdm(props) {
                     </TouchableOpacity>
                 </Text>
 
-                <TouchableOpacity style={[styles.viewAll , { backgroundColor: "#4bb8b6"}]}>
+                <TouchableOpacity style={[styles.viewAll , { backgroundColor: "#4bb8b6"}]}  onPress={() => props.navigation.navigate("Reservas")}>
                     <ImageBackground
                         source = {require('./image/churras.png')}
                         style={styles.img1}
@@ -149,10 +153,10 @@ export default function IndexAdm(props) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#918f8d"}]}>
-                    <Text style = {styles.text2}> Coleta de Lixos </Text>
+                    <Text style = {[styles.text2,{ width: '95px'}]}> Coleta de Lixos </Text>
                     <ImageBackground
                         source = {require('./image/lixo.png')}
-                        style={styles.img2}
+                        style={[styles.img2, {bottom: '50px'}]}
                     />
                 </TouchableOpacity>
             </View>
