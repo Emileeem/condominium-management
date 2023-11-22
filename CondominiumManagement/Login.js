@@ -68,7 +68,7 @@ export default function Login(props) {
                 <Text style={{
                     fontFamily: 'cursive', fontSize: 30
                 }}>  </Text>
-
+            
                 <Text style={styles.text}> Email: </Text>
                 <TextInput style={styles.input}/>
 

@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderRadius: 5,
         borderColor: '#595859',
-        borderWidth: 1
+        borderWidth: 1,
+        fontSize:'23px'
     },
     input2:
     {
@@ -29,7 +30,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderColor: '#595859',
         borderWidth: 1,
-        margin: 10
+        margin: 10,
+        fontSize:'20px'
     },
     text:
     {
@@ -68,11 +70,16 @@ export default function Cadastro(props) {
                 Nome Completo:
             </Text>
             <TextInput style={styles.input}/>
+
+            <Text style={styles.text}> CPF: </Text>
+            <TextInput style={styles.input}/>
+
             <View style={{
                 display:"flex",
                 flexDirection:"row",
                 justifyContent:"space-between"
             }} > 
+
                 <View>
                     <Text style={[styles.text, styles.text2]}>
                         Apartamento:
