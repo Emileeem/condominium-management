@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import logo from './image/logo2.png'
+import logo from './image/logo3.png'
 
 const styles = StyleSheet.create({
     main: {
-        backgroundColor: '#F2DFDF',
+        backgroundColor: '#000020',
         margin: 1,
         width: '100%',
         height: '100%',
@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
     {
         width: '360px',
         height: 35,
-        backgroundColor: '#D9C1BB',
+        backgroundColor: '#e8c39e',
         marginBottom: 15,
         borderRadius: 5,
-        borderColor: '#595859',
+        borderColor: '#000020',
         borderWidth: 1,
         fontSize:'23px'
     },
@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
     {
         width: '170px',
         height: 35,
-        backgroundColor: '#D9C1BB',
+        backgroundColor: '#e8c39e',
         marginBottom: 15,
         borderRadius: 5,
-        borderColor: '#595859',
+        borderColor: '#000020',
         borderWidth: 1,
         margin: 10,
         fontSize:'20px'
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     text:
     {
         fontSize: 22,
-        color: "#595859"
+        color: "#f5e1ce"
     },
     text2:
     {
@@ -45,12 +45,12 @@ const styles = StyleSheet.create({
     },
     buton:
     {
-        backgroundColor: "#d9b1ad",
+        backgroundColor: "#2f2c79",
         borderRadius: 5,
         marginTop: 10,
         width: "105px",
         height: "10",
-        borderColor: '#595859',
+        borderColor: '#f5e1ce',
         borderWidth: 2
     },
     text3: 
