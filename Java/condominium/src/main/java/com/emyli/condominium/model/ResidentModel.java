@@ -24,7 +24,8 @@ public class ResidentModel {
     private Short apartamento;
     private String bloco;
 
-    public ResidentModel(String id, String nomeCompleto,  String password, String email, String bloco, Short apartamento Integer cpf) {
+    public ResidentModel(String id, String nomeCompleto,  String password, String email, String bloco, Short apartamento, Integer cpf) 
+    {
         this.id = id;
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
