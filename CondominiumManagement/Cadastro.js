@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import logo from './image/logo3.png'
+import { useState } from 'react';
+import axios from 'axios';
 
 const styles = StyleSheet.create({
     main: {
@@ -62,6 +64,33 @@ const styles = StyleSheet.create({
 
 });
 export default function Cadastro(props) {
+    function EqualPassword( password,  confirmPassword)
+    {
+        if(password === confirmPassword){ 
+            if(user.nomeCompleto != "" && user.cpf != "" && user.apartamento != "" && user.email != "" && user.password != ""){
+                axios.post("http://localhost:8080/", {nomeCompleto: nomeCompleto, cpf: cpf, apartamento: apartamento, email: email, password:password})
+                    .then ((data)=> {data.data})
+                alert("usuário criado com sucesso!")
+                props.navigation.navigate("Login")
+            }
+            else {
+                alert("É necessário preencher todos os campos!")
+            }
+        }
+        else {
+            alert("As senhas não coincidem.")
+        }
+    }
+    const [passConfirm, setPassConfirm] = useState ({ confirmPassword:""})
+    const [user, setUser] = useState(
+        {
+            nomeCompleto: "",
+            cpf: "",
+            apartamento: "",
+            bloco: "",
+            email: "",
+            password: ""
+    });
     return(
     <>
         <View style={styles.main}>
@@ -69,10 +98,12 @@ export default function Cadastro(props) {
             <Text style={styles.text}>
                 Nome Completo:
             </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input}
+                onChangeText={(text)=> setUser({...user, nomeCompleto: text})}/>
 
             <Text style={styles.text}> CPF: </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input}
+                 onChangeText={(text)=> setUser({...user, cpf: text})}/>
 
             <View style={{
                 display:"flex",
@@ -84,14 +115,16 @@ export default function Cadastro(props) {
                     <Text style={[styles.text, styles.text2]}>
                         Apartamento:
                     </Text>
-                    <TextInput style={styles.input2}/>
+                    <TextInput style={styles.input2}
+                         onChangeText={(text)=> setUser({...user, apartamento: text})}/>
                 </View>
                 
                 <View>
                     <Text style={[styles.text, styles.text2]}>
                         Bloco:
                     </Text>
-                    <TextInput style={styles.input2}/>
+                    <TextInput style={styles.input2}
+                         onChangeText={(text)=> setUser({...user, bloco: text})}/>
                 </View>
 
 
@@ -100,19 +133,23 @@ export default function Cadastro(props) {
             <Text style={styles.text}>
                 Email:
             </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input}
+                 onChangeText={(text)=> setUser({...user, email: text})}/>
 
             <Text style={styles.text}>
                 Senha:
             </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input}  secureTextEntry={true}
+                 onChangeText={(text)=> setUser({...user, password: text})}/>
 
             <Text style={styles.text}>
                 Confirmar Senha:
             </Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input}  secureTextEntry={true}
+                onChangeText={(text)=> setPassConfirm({...passConfirm, confirmPassword: text})}/>
 
-            <TouchableOpacity style={styles.buton}  onPress={() => props.navigation.navigate("IndexAdm")}> 
+            <TouchableOpacity style={styles.buton}  onPress={() => {EqualPassword(user.password, passConfirm.confirmPassword)}}
+            >
                 <Text style={styles.text3}> Cadastrar </Text> 
             </TouchableOpacity>
         </View>
