@@ -1,8 +1,5 @@
 package com.emyli.condominium.model;
 
-import java.util.Collection;
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,11 +17,4 @@ public class ComplaintsModel {
     private String titulo;
     private String descricao;
 
-
-    public ComplaintsModel(String id, String titulo, String descricao) 
-    {
-        this.id = id;
-        this.titulo = titulo;
-        this.descricao = descricao;
-    }
 }

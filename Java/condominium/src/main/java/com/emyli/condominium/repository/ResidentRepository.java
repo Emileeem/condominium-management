@@ -7,7 +7,7 @@ import com.emyli.condominium.model.ResidentModel;
 
 import java.util.List;
 
-public class ResidentRepository {
+public interface ResidentRepository extends MongoRepository<ResidentModel, String> {
 
     @Query("{'name': ?0}")
     List<ResidentModel> findByNomeCompleto(String nomeCompleto);

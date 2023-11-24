@@ -1,9 +1,6 @@
 package com.emyli.condominium.model;
 
 import java.sql.Date;
-import java.util.Collection;
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,10 +18,4 @@ public class GrillModel {
     private String titulo;
     private Date data;
 
-    public GrillModel(String id, String titulo,  Date data) 
-    {
-        this.id = id;
-        this.titulo = titulo;
-        this.data = data;
-    }
 }

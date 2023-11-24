@@ -57,7 +57,7 @@ public class ResidentController {
 
     @PutMapping("/{id}")
     public void putUser(@RequestBody ResidentModel newResident, @PathVariable String id) {
-        residentService.save((String) id, (String) newResident.getNomeCompleto(), (Integer) newResident.getCpf(), (String) newResident.getEmail());
+        residentService.save(new ResidentModel(id, newResident.getNomeCompleto(), newResident.getPassword(), newResident.getEmail(), newResident.getBloco(), newResident.getApartamento(), newResident.getCpf()));
     }
 
     @DeleteMapping("/{id}")

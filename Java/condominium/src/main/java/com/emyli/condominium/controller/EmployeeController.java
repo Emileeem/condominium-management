@@ -58,7 +58,7 @@ public class EmployeeController {
 
     @PutMapping("/{id}")
     public void putUser(@RequestBody EmployeeModel newEmployee, @PathVariable String id) {
-        employeeService.save((String) id, (String) newEmployee.getNomeCompleto(), (Integer) newEmployee.getCpf(), (String) newEmployee.getEmail());
+        employeeService.save(new EmployeeModel(id, newEmployee.getNomeCompleto(), newEmployee.getCpf(), newEmployee.getPassword(), newEmployee.getEmail()));
     }
 
     @DeleteMapping("/{id}")
