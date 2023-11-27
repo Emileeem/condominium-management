@@ -64,11 +64,20 @@ const styles = StyleSheet.create({
 
 });
 export default function Cadastro(props) {
+    const [user, setUser] = useState(
+        {
+            nomeCompleto: "",
+            cpf: "",
+            apartamento: "",
+            bloco: "",
+            email: "",
+            password: ""
+    });
     function EqualPassword( password,  confirmPassword)
     {
         if(password === confirmPassword){ 
             if(user.nomeCompleto != "" && user.cpf != "" && user.apartamento != "" && user.email != "" && user.password != ""){
-                axios.post("http://localhost:8080/", {nomeCompleto: nomeCompleto, cpf: cpf, apartamento: apartamento, email: email, password:password})
+                axios.post("http://localhost:8080/", {nomeCompleto: user.nomeCompleto, cpf: user.cpf, apartamento: user.apartamento, email: user.email, password:user.password})
                     .then ((data)=> {data.data})
                 alert("usuário criado com sucesso!")
                 props.navigation.navigate("Login")
@@ -82,15 +91,6 @@ export default function Cadastro(props) {
         }
     }
     const [passConfirm, setPassConfirm] = useState ({ confirmPassword:""})
-    const [user, setUser] = useState(
-        {
-            nomeCompleto: "",
-            cpf: "",
-            apartamento: "",
-            bloco: "",
-            email: "",
-            password: ""
-    });
     return(
     <>
         <View style={styles.main}>
@@ -148,8 +148,7 @@ export default function Cadastro(props) {
             <TextInput style={styles.input}  secureTextEntry={true}
                 onChangeText={(text)=> setPassConfirm({...passConfirm, confirmPassword: text})}/>
 
-            <TouchableOpacity style={styles.buton}  onPress={() => {EqualPassword(user.password, passConfirm.confirmPassword)}}
-            >
+            <TouchableOpacity style={styles.buton}  onPress={() => {EqualPassword(user.password, passConfirm.confirmPassword)}}>
                 <Text style={styles.text3}> Cadastrar </Text> 
             </TouchableOpacity>
         </View>

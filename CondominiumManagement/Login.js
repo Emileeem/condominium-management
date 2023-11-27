@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import logo from './image/logo3.png'
+import { useState } from 'react';
+import axios from 'axios';
 
 const styles = StyleSheet.create({
     main: {
@@ -58,10 +59,52 @@ const styles = StyleSheet.create({
 });
 
 export default function Login(props) {
-    function goToUsuarios() {
-        SetUtils({ ...utils, email: email, senha: senha })
-        props.navigation.navigate('Cadastro')
-    }
+    const [user, setUser] = useState(
+        {
+            email: "",
+            password: ""
+        });
+        async function validateLogin() {
+            console.log("Email:", user.email);
+            console.log("Password:", user.password);
+        
+            await axios.get(`http://localhost:8080/user/${user.email}/${user.password}`)
+            .then((response) => {
+                console.log("API Response:", response.data);
+        
+                const infoUser = response.data;
+        
+                if (user.email !== "" && user.password !== "") {
+                    if (infoUser && infoUser.email === user.email && infoUser.password === user.password) {
+                        console.log("Login Successful");
+                        props.navigation.navigate("Index");
+                    } else {
+                        console.log("Invalid User");
+                        alert("Usuário não encontrado!");
+                    }
+                } else {
+                    console.log("Empty Email or Password");
+                    alert("Preencha os campos antes de tentar entrar");
+                }
+            })
+            .catch((error) => {
+                console.error("API Error:", error);
+        
+                if (error.response) {
+                    // A resposta foi recebida, mas o servidor retornou um código de status diferente de 2xx
+                    console.error("Status Code:", error.response.status);
+                    console.error("Response Data:", error.response.data);
+                } else if (error.request) {
+                    // A solicitação foi feita, mas não houve resposta do servidor
+                    console.error("No response received. Is the server running?");
+                } else {
+                    // Algo aconteceu ao configurar a solicitação que acionou um erro
+                    console.error("Error setting up the request:", error.message);
+                }
+        
+                alert("Erro ao tentar fazer login. Por favor, tente novamente.");
+            });
+        }
 
     return (
         <>
@@ -72,12 +115,12 @@ export default function Login(props) {
                 }}>  </Text>
 
                 <Text style={styles.text}> Email: </Text>
-                <TextInput style={styles.input} />
+                <TextInput style={styles.input} onChangeText={(text)=> setUser({...user, email: text})}/>
 
                 <Text style={styles.text}>  Senha: </Text>
-                <TextInput style={styles.input} secureTextEntry={true} />
+                <TextInput style={styles.input} secureTextEntry={true} onChangeText={(text)=> setUser({...user, password: text})}/>
 
-                <TouchableOpacity style={styles.buton2} onPress={() => props.navigation.navigate("Index")}>
+                <TouchableOpacity style={styles.buton2} onPress={() => {validateLogin()}}>
                     <Text style={styles.text2}> Entrar </Text>
                 </TouchableOpacity>
 

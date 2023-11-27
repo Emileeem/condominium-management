@@ -27,26 +27,27 @@ public class ResidentController {
         return listRes;
     }
 
-    // @PostMapping("/file")
-    // public void testeFIle(MultipartFile file) throws IOException {
-    // residentService.saveImage(file);
-    // }
-
     @GetMapping("/{nomeCompleto}")
-    public List<ResidentModel> getEmployeeByName(@PathVariable String name) {
+    public List<ResidentModel> getResidentByName(@PathVariable String name) {
         List<ResidentModel> listRes = residentService.findByName(name);
         return listRes;
     }
 
     @GetMapping("/{cpf}")
-    public List<ResidentModel> getEmployeeByAgeAndName(@PathVariable Integer cpf) {
+    public List<ResidentModel> getResidentByAgeAndName(@PathVariable Integer cpf) {
         List<ResidentModel> listRes = residentService.findByCpf(cpf);
         return listRes;
     }
 
     @GetMapping("/{email}")
-    public List<ResidentModel> getEmployeeByAgeAndName(@PathVariable String email) {
+    public List<ResidentModel> getResidentByEmail(@PathVariable String email) {
         List<ResidentModel> listRes = residentService.findByEmail(email);
+        return listRes;
+    }
+
+    @GetMapping("/{email}/{password}")
+    public List<ResidentModel> getResidentByEmailAndPassword(@PathVariable String email,  String password) {
+        List<ResidentModel> listRes = residentService.findByEmailAndPass(email, password);
         return listRes;
     }
 
@@ -61,7 +62,7 @@ public class ResidentController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable String id) {
+    public void deleteResident(@PathVariable String id) {
         residentService.delete(id);
     }
 }

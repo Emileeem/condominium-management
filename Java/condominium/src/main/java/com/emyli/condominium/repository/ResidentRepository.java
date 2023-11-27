@@ -20,4 +20,7 @@ public interface ResidentRepository extends MongoRepository<ResidentModel, Strin
 
     @Query("{'apartamento:' ?1, 'bloco': ?0}")
     List<ResidentModel> findByApartamentoAndBloco(short apartamento, String bloco);
+
+    @Query("{'email': ?1, 'password' :?0}")
+    List<ResidentModel> findByEmailAndPass(String email, String password);
 }

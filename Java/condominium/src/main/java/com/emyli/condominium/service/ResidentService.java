@@ -38,6 +38,10 @@ public class ResidentService {
         return this.residentRepository.findByApartamentoAndBloco(apartamento, bloco);
     }
 
+    public List<ResidentModel> findByEmailAndPass(String email, String password) {
+        return this.residentRepository.findByEmailAndPass(email, password);
+    }
+
     public void delete(String id) {
         this.residentRepository.deleteById(id);
     }
