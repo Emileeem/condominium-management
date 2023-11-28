@@ -2,6 +2,8 @@ package com.emyli.condominium.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,28 +29,30 @@ public class ResidentController {
         return listRes;
     }
 
-    @GetMapping("/{nomeCompleto}")
-    public List<ResidentModel> getResidentByName(@PathVariable String name) {
-        List<ResidentModel> listRes = residentService.findByName(name);
-        return listRes;
-    }
-
-    @GetMapping("/{cpf}")
-    public List<ResidentModel> getResidentByAgeAndName(@PathVariable Integer cpf) {
-        List<ResidentModel> listRes = residentService.findByCpf(cpf);
-        return listRes;
-    }
-
     @GetMapping("/{email}")
     public List<ResidentModel> getResidentByEmail(@PathVariable String email) {
         List<ResidentModel> listRes = residentService.findByEmail(email);
         return listRes;
     }
 
-    @GetMapping("/{email}/{password}")
-    public List<ResidentModel> getResidentByEmailAndPassword(@PathVariable String email,  String password) {
-        List<ResidentModel> listRes = residentService.findByEmailAndPass(email, password);
-        return listRes;
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody ResidentModel resident) {
+        // Recupere o ResidentModel com base no email
+        List<ResidentModel> residents = residentService.findByEmail(resident.getEmail());
+
+        // Verifique se existe um ResidentModel com o email fornecido
+        if (residents.isEmpty()) {
+            return new ResponseEntity<>("Usuário não encontrado", HttpStatus.NOT_FOUND);
+        }
+
+        ResidentModel storedResident = residents.get(0);
+
+        // Verifique se a senha está correta
+        if (resident.getPassword().equals(storedResident.getPassword())) {
+            return new ResponseEntity<>("Login bem-sucedido", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Senha incorreta", HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @PostMapping("")

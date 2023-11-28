@@ -15,20 +15,15 @@ public class ResidentModel {
     @Id
     private String id;
     private String nomeCompleto;
-    private Integer cpf;
+    private String cpf;
     private String password;
     private String email;
     private Short apartamento;
     private String bloco;
 
-    public ResidentModel(String id, String nomeCompleto,  String password, String email, String bloco, Short apartamento, Integer cpf) 
+    public ResidentModel()
     {
-        this.id = id;
-        this.nomeCompleto = nomeCompleto;
-        this.cpf = cpf;
-        this.password = password;
-        this.email = email;
-        this.apartamento = apartamento;
-        this.bloco = bloco;
+
     }
+
 }

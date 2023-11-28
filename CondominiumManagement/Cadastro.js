@@ -77,7 +77,7 @@ export default function Cadastro(props) {
     {
         if(password === confirmPassword){ 
             if(user.nomeCompleto != "" && user.cpf != "" && user.apartamento != "" && user.email != "" && user.password != ""){
-                axios.post("http://localhost:8080/", {nomeCompleto: user.nomeCompleto, cpf: user.cpf, apartamento: user.apartamento, email: user.email, password:user.password})
+                axios.post("http://localhost:8080/user", {nomeCompleto: user.nomeCompleto, cpf: user.cpf, apartamento: parseInt(user.apartamento), email: user.email, password:user.password})
                     .then ((data)=> {data.data})
                 alert("usuário criado com sucesso!")
                 props.navigation.navigate("Login")

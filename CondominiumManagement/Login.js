@@ -68,42 +68,42 @@ export default function Login(props) {
             console.log("Email:", user.email);
             console.log("Password:", user.password);
         
-            await axios.get(`http://localhost:8080/user/${user.email}/${user.password}`)
-            .then((response) => {
+            try {
+                const response = await axios.post('http://localhost:8080/user/login', {
+                    email: user.email,
+                    password: user.password,
+                });
+        
                 console.log("API Response:", response.data);
         
                 const infoUser = response.data;
         
                 if (user.email !== "" && user.password !== "") {
-                    if (infoUser && infoUser.email === user.email && infoUser.password === user.password) {
-                        console.log("Login Successful");
+                    if (infoUser.email === user.email && infoUser.password === user.password) {
+                        console.log("Sucesso no Login");
                         props.navigation.navigate("Index");
                     } else {
-                        console.log("Invalid User");
+                        console.log("Usuário Inválido");
                         alert("Usuário não encontrado!");
                     }
                 } else {
-                    console.log("Empty Email or Password");
+                    console.log("Email ou Senha vazio");
                     alert("Preencha os campos antes de tentar entrar");
                 }
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error("API Error:", error);
         
                 if (error.response) {
-                    // A resposta foi recebida, mas o servidor retornou um código de status diferente de 2xx
                     console.error("Status Code:", error.response.status);
                     console.error("Response Data:", error.response.data);
                 } else if (error.request) {
-                    // A solicitação foi feita, mas não houve resposta do servidor
                     console.error("No response received. Is the server running?");
                 } else {
-                    // Algo aconteceu ao configurar a solicitação que acionou um erro
                     console.error("Error setting up the request:", error.message);
                 }
         
                 alert("Erro ao tentar fazer login. Por favor, tente novamente.");
-            });
+            }
         }
 
     return (
