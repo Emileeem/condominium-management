@@ -12,7 +12,7 @@ public interface EmployeeRepository extends MongoRepository<EmployeeModel, Strin
     @Query("{'name': ?0}")
     List<EmployeeModel> findByNomeCompleto(String nomeCompleto);
 
-    @Query("{'email: ?0'}")
+    @Query("{'email': ?0'}")
     List<EmployeeModel> findByEmail(String email);
 
     @Query("{'cpf: ?0'}")

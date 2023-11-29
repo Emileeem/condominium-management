@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.emyli.condominium.model.ResidentModel;
+import com.emyli.condominium.repository.ResidentRepository;
 import com.emyli.condominium.service.ResidentService;
+
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/user")
@@ -22,6 +25,7 @@ public class ResidentController {
     
     @Autowired
     private ResidentService residentService;
+    private ResidentRepository residentRepository;
 
     @GetMapping("")
     public List<ResidentModel> getAllUser() {
@@ -29,11 +33,24 @@ public class ResidentController {
         return listRes;
     }
 
-    @GetMapping("/{email}")
-    public ResidentModel getResidentByEmail(@PathVariable String email) {
-        ResidentModel listRes = residentService.findByEmail(email);
-        return listRes;
-    }
+    // @GetMapping("/{email}")
+    // public ResidentModel getResidentByEmail(@PathVariable String email) {
+    //     ResidentModel listRes = residentService.findByEmail(email);
+    //     return listRes;
+    // }
+
+    // @GetMapping("/me")
+    // public ResidentModel getResidentByNome() {
+    //     ResidentModel listRes = null;
+    //     if (name.equals("loggedUser")) {
+    //         String currentUserUsername = residentRepository.findByUsername(nome).getNomeCompleto();
+    //         listRes = residentService.findByName(currentUserUsername);
+    //     } else {
+    //         listRes = residentService.findByName(nome);
+    //     }
+
+    //     return listRes;
+    // }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody ResidentModel resident) {

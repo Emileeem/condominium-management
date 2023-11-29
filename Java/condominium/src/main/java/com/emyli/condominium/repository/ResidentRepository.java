@@ -10,7 +10,7 @@ import java.util.List;
 public interface ResidentRepository extends MongoRepository<ResidentModel, String> {
 
     @Query("{'name': ?0}")
-    List<ResidentModel> findByNomeCompleto(String nomeCompleto);
+    ResidentModel findByNomeCompleto(String nomeCompleto);
 
     @Query("{'email': ?0}")
     ResidentModel findByEmail(String email);

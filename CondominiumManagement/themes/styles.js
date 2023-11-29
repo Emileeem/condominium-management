@@ -2,13 +2,10 @@ import {  StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     main: {
-        backgroundColor: '#F2F2F2',
+        backgroundColor: '#2F2C79',
         margin: 1,
         width: '100%',
         height: '100%',
-        borderColor: '#D9B1AD',
-        borderWidth: 2,
-        padding: 10,
         margin: "1%",
         alignContent: "center",
         alignItems: "center"
@@ -22,9 +19,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#D9B1AD",
         borderWidth: 2,
         borderRadius: 10,
-        borderColor: "#595859",
-        width: "354px",
-        height: "110px",
+        borderColor: "#e8c39e",
+        width: "150px",
+        height: "150px",
         marginLeft: "1%",
         marginBottom: "2%",
     },
@@ -53,13 +50,8 @@ const styles = StyleSheet.create({
         width: '100px',
         height: '100px',
         display: 'flex',
-        left: "70%"
-    },
-    img2:
-    {
-        width: '100px',
-        height: '100px',
-        bottom: "45px",
+        left: '12%',
+        top: 15
     },
     centeredView: {
         flex: 1,

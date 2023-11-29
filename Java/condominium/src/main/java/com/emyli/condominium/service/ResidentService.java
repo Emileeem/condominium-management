@@ -22,7 +22,7 @@ public class ResidentService {
         return this.residentRepository.findAll();
     }
 
-    public List<ResidentModel> findByName(String nomeCompleto) {
+    public ResidentModel findByName(String nomeCompleto) {
         return this.residentRepository.findByNomeCompleto(nomeCompleto);
     }
 

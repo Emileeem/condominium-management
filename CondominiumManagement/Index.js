@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View, Modal, TouchableOpacity, ImageBackground, Pressable, TextInput } from 'react-native';
-import React, { useState, useContext } from 'react';
-import logo from './image/logo.png'
-import { registerTranslation, DatePickerInput  } from 'react-native-paper-dates'
+import { Text, View, Modal, TouchableOpacity, Pressable, TextInput} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import logo from './image/logo3.png'
+import { DatePickerInput  } from 'react-native-paper-dates'
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import EButton from './components/EButton';
 import styles from './themes/styles';
+import axios from 'axios';
+
 export default function Index(props) {
     // Modals
     const [denuncia, setDenunciaVisible] = useState(false);
@@ -13,55 +15,69 @@ export default function Index(props) {
     //Calendario
     const [inputDate, setInputDate] = React.useState(undefined)
 
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        // Retrieve logged-in user information
+        axios.get('http://localhost:8080/user/me')
+          .then((response) => {
+            if (response.data) {
+              setUserName(response.data.nomeCompleto);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, []);
+
     return (
         <>
             <View style={styles.main}>
                 <View style={styles.main2}>
-                    <img src={logo} style={{ width: "150px", height: "150px" }} />
-                    <Text style={{ fontSize: "30px" }}> Bem vindo s/n! </Text>
+                    <img src={logo} style={{ width: "250px", height: "250px" }} />
+                </View>
+                    <Text style={{ fontSize: "30px", color: "#F5E1CE" }}> Bem vindo, {userName}! </Text>
+                    
+
+                <Text style={{ 
+                    fontSize: "25px", 
+                    textAlign: 'center', 
+                    margin: "20px", 
+                    color: "#F5E1CE"
+                }}>
+                     O valor atual do condomínio é de: R$ 1500,00 
+                </Text>
+                
+                <View style = {{display: 'flex', flexDirection: 'row'}}>
+                    <EButton 
+                        img={require("./image/churras.png")}
+                        onPress={() => setCalendarVisible(true)}
+                        >
+                    </EButton>
+                    <EButton 
+                        img={require("./image/denuncia.png")}
+                        onPress={() => setDenunciaVisible(true)}
+                        >
+                    </EButton>
+                </View>
+                <View style = {{display: 'flex', flexDirection: 'row'}}>
+                    <EButton 
+                        img={require("./image/boleto.png")}
+                        onPress={() => setCalendarVisible(true)}
+                        >
+                    </EButton>
+                    <EButton 
+                        img={require("./image/carro.png")}
+                        onPress={() => setCalendarVisible(true)}
+                        >
+                    </EButton>
                 </View>
 
-                <Text style={{ fontSize: "25px", textAlign: 'center', margin: "20px" }}> O valor atual do condomínio é de: R$ 1500,00 </Text>
-
                 <EButton 
-                    nome="reservar churrasqueira"
-                    cor="#4bb8b6"
-                    img={require("./image/churras.png")}
-                    onPress={() => setCalendarVisible(true)}
-                    >
+                        img={require("./image/votar.png")}
+                        onPress={() => setCalendarVisible(true)}
+                        >
                 </EButton>
-
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#c43333" }]} onPress={() => setDenunciaVisible(true)}>
-                    <Text style={styles.text2}> Denunciar Irregularidades </Text>
-                    <ImageBackground
-                        source={require('./image/denuncia.png.png')}
-                        style={styles.img2}
-                    />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#92cf69" }]}>
-                    <ImageBackground
-                        source={require('./image/boleto.png')}
-                        style={styles.img1}
-                    />
-                    <Text style={styles.text}> Gerar Boleto </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#674d9e" }]}>
-                    <Text style={styles.text2}> Vaga de estacionamento </Text>
-                    <ImageBackground
-                        source={require('./image/carro.png')}
-                        style={styles.img2}
-                    />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={[styles.viewAll, { backgroundColor: "#ebe86c" }]}>
-                    <ImageBackground
-                        source={require('./image/votar.png')}
-                        style={styles.img1}
-                    />
-                    <Text style={styles.text}> Votações </Text>
-                </TouchableOpacity>
             </View>
 
             <Modal
