@@ -26,7 +26,7 @@ public class ResidentService {
         return this.residentRepository.findByNomeCompleto(nomeCompleto);
     }
 
-    public List<ResidentModel> findByEmail(String email) {
+    public ResidentModel findByEmail(String email) {
         return this.residentRepository.findByEmail(email);
     }
 

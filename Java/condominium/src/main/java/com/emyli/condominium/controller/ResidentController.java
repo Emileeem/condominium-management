@@ -30,25 +30,24 @@ public class ResidentController {
     }
 
     @GetMapping("/{email}")
-    public List<ResidentModel> getResidentByEmail(@PathVariable String email) {
-        List<ResidentModel> listRes = residentService.findByEmail(email);
+    public ResidentModel getResidentByEmail(@PathVariable String email) {
+        ResidentModel listRes = residentService.findByEmail(email);
         return listRes;
     }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody ResidentModel resident) {
         // Recupere o ResidentModel com base no email
-        List<ResidentModel> residents = residentService.findByEmail(resident.getEmail());
+        var residents = residentService.findByEmail(resident.getEmail());
 
         // Verifique se existe um ResidentModel com o email fornecido
-        if (residents.isEmpty()) {
+        if (residents == null) {
             return new ResponseEntity<>("Usuário não encontrado", HttpStatus.NOT_FOUND);
         }
 
-        ResidentModel storedResident = residents.get(0);
 
         // Verifique se a senha está correta
-        if (resident.getPassword().equals(storedResident.getPassword())) {
+        if (residents.getPassword().equals(resident.getPassword())) {
             return new ResponseEntity<>("Login bem-sucedido", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Senha incorreta", HttpStatus.UNAUTHORIZED);

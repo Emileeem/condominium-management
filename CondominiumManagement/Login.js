@@ -75,30 +75,31 @@ export default function Login(props) {
                 });
         
                 console.log("API Response:", response.data);
-        
-                const infoUser = response.data;
-        
-                if (user.email !== "" && user.password !== "") {
-                    if (infoUser.email === user.email && infoUser.password === user.password) {
-                        console.log("Sucesso no Login");
-                        props.navigation.navigate("Index");
-                    } else {
-                        console.log("Usuário Inválido");
-                        alert("Usuário não encontrado!");
-                    }
-                } else {
+                
+                if (user.email !== "" && user.password !== "") 
+                {
+                    console.log("Sucesso no Login");
+                    props.navigation.navigate("Index");
+                } 
+                else 
+                {
                     console.log("Email ou Senha vazio");
                     alert("Preencha os campos antes de tentar entrar");
                 }
             } catch (error) {
                 console.error("API Error:", error);
         
-                if (error.response) {
+                if (error.response) 
+                {
                     console.error("Status Code:", error.response.status);
                     console.error("Response Data:", error.response.data);
-                } else if (error.request) {
+                } 
+                else if (error.request) 
+                {
                     console.error("No response received. Is the server running?");
-                } else {
+                } 
+                else 
+                {
                     console.error("Error setting up the request:", error.message);
                 }
         
