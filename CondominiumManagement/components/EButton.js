@@ -9,7 +9,6 @@ export default function EButton(props) {
                 <ImageBackground
                     source={props.img}
                     style={props.style ? props.style : styles.img1}
-                    
                 />
             </TouchableOpacity>
         

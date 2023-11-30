@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, Pressable, TouchableOpacity, Modal } from 'react-native';
 import React, { useState } from 'react';
-import logo from './image/logo.png'
+import logo from './image/logo3.png'
 
 const styles = StyleSheet.create({
     main: {
-        backgroundColor: '#F2F2F2',
+        backgroundColor: '#000020',
         margin: 1,
         width: '100%',
         height: '100%',
@@ -106,10 +106,10 @@ export default function Denuncias(props) {
             <View style={styles.main}>
                 <View >
                     <img src={logo} style={styles.logo} />
-                    <Text style={{ fontSize: "30px" }}> Denúncias pendentes:</Text>
+                    <Text style={{ fontSize: "30px", color: '#F5E1CE' }}> Reservas pendentes:</Text>
                 </View>
                 <View style={styles.view}>
-                    <Text style={styles.title}> Evento </Text>
+                    <Text style={[styles.title, {color: '#F5E1CE'}]}> Evento </Text>
                     <TouchableOpacity style={styles.buton} onPress={() => setModalVisible(true)}>
                         <Text style={styles.title}> Visualizar </Text>
                     </TouchableOpacity>

@@ -65,9 +65,6 @@ export default function Login(props) {
             password: ""
         });
         async function validateLogin() {
-            console.log("Email:", user.email);
-            console.log("Password:", user.password);
-        
             try {
                 const response = await axios.post('http://localhost:8080/user/login', {
                     email: user.email,

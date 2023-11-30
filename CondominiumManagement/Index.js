@@ -1,4 +1,4 @@
-import { Text, View, Modal, TouchableOpacity, Pressable, TextInput} from 'react-native';
+import { Text, View, Modal, TouchableOpacity, Pressable, TextInput, TouchableOpacityBase} from 'react-native';
 import React, { useState, useEffect } from 'react';
 import logo from './image/logo3.png'
 import { DatePickerInput  } from 'react-native-paper-dates'
@@ -36,8 +36,13 @@ export default function Index(props) {
                 <View style={styles.main2}>
                     <img src={logo} style={{ width: "250px", height: "250px" }} />
                 </View>
-                    <Text style={{ fontSize: "30px", color: "#F5E1CE" }}> Bem vindo, {userName}! </Text>
-                    
+                    <Text style={{ fontSize: "30px", color: "#F5E1CE" }}> Bem vindo {userName}! </Text>
+                
+                <TouchableOpacity 
+                    style = {styles.buttonVoltar}
+                    onPress={() => props.navigation.navigate('Login')}>
+                    Voltar
+                </TouchableOpacity>
 
                 <Text style={{ 
                     fontSize: "25px", 
@@ -63,19 +68,16 @@ export default function Index(props) {
                 <View style = {{display: 'flex', flexDirection: 'row'}}>
                     <EButton 
                         img={require("./image/boleto.png")}
-                        onPress={() => setCalendarVisible(true)}
                         >
                     </EButton>
                     <EButton 
                         img={require("./image/carro.png")}
-                        onPress={() => setCalendarVisible(true)}
                         >
                     </EButton>
                 </View>
 
                 <EButton 
                         img={require("./image/votar.png")}
-                        onPress={() => setCalendarVisible(true)}
                         >
                 </EButton>
             </View>

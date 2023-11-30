@@ -18,7 +18,7 @@ export default function App() {
     <NavigationContainer>
       <UtilsContext.Provider value={{utils, setUtils}}>
         <Stack.Navigator>
-          <Stack.Screen name="Login" options={{headerShown: false}} component={Login}/>
+          <Stack.Screen name="Login" options={{headerShown: false}} component={IndexAdm}/>
           <Stack.Screen name="Cadastro" options={{title: 'Cadastro de Morador:'}} component={Cadastro}/> 
           <Stack.Screen name="Index" options={{headerShown: false}} component={Index}/> 
           <Stack.Screen name="IndexAdm" options={{headerShown: false}} component={IndexAdm}/> 

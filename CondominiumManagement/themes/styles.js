@@ -118,7 +118,9 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         height: "35px",
         width: "275px",
-        margin: "1%"
+        margin: "1%",
+        color: '#F5E1CE',
+        fontSize: 20
     },
     input2: {
         borderColor: "#595859",
@@ -126,6 +128,15 @@ const styles = StyleSheet.create({
         height: "95px",
         width: "275px",
         margin: "1%"
+    },
+    buttonVoltar: {
+        backgroundColor: "#F5E1CE", 
+        width: "20%", 
+        margin: 5, 
+        borderRadius: 15, 
+        textAlign: 'center', 
+        color: '#000020', 
+        fontSize: 20
     }
 })
 
